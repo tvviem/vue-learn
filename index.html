@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +11,7 @@
 <body>
     <div class="nav-bar"></div>
     <div id="app">
-
         <div class="product">
-
             <div class="product-image">
                 <img v-bind:src="image">
             </div>
@@ -26,7 +23,7 @@
                     <li v-for="detail in details">{{ detail }}</li>
                 </ul>
                 <div v-for="variant in variants" :key="variant.variantId">
-                    <p>{{ variant.variantColor }}</p>
+                    <p @mouseover="updateProduct(variant.variantImage)"> {{ variant.variantColor }}</p>
                 </div>
                 <p>
                     Size:
@@ -35,6 +32,11 @@
                         <span v-if="idx < sizes.length - 1">, </span>
                     </span>
                 </p>
+                <button v-on:click="addToCart">Add to cart</button>
+                <div class="cart">
+                    <p>Cart({{ cart }})</p>
+                </div>
+                <button @click="removeFromCart">Rm fro-cart </button>
             </div>
         </div>
 
